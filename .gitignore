@@ -1,2 +1,3 @@
-.well-known
-*.un~
+test-results/
+tmp/
+routes/
