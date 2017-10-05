@@ -1,0 +1,43 @@
+{{set . "title" "Demo"}}
+{{template "header.html" .}}
+
+<h1>Demo</h1>
+<p>Click an example command, or write your own:<br><br>
+<a href="demo?cmd=rdap --help">rdap --help</a><br>
+<a href="demo?cmd=rdap -v example.cz">rdap -v example.cz</a><br>
+<a href="demo?cmd=rdap -v 2001:db8::">rdap -v 2001:db8::</a><br>
+<a href="demo?cmd=rdap -v -e 1~VRSN">rdap -v -e 1~VRSN</a><br>
+</p>
+
+<p>This is experimental... most of the flags advertised aren't implemented yet.</p>
+
+<form method="get" action="/demo">
+<input id="cmd" style="width:500px" type="text" name="cmd" value="{{.cmd}}"> <input type="submit" value="Run">
+</form>
+
+<pre id="output">
+</pre>
+<img src="/public/img/loading.gif" id="loading">
+
+<script>
+var socket = new WebSocket('wss://www.openrdap.org/websocket/rdap?cmd={{.cmd}}');
+
+socket.onmessage = function(event) {
+    var msg = JSON.parse(event.data);
+    document.getElementById("output").innerHTML += msg.Text;
+}
+
+
+function hideLoading(event) {
+    document.getElementById("loading").style.visibility = "hidden";
+}
+
+socket.onclose = hideLoading;
+socket.onerror = hideLoading;
+
+cmd = document.getElementById("cmd");
+cmd.focus();
+cmd.selectionStart = cmd.selectionEnd = cmd.value.length;
+</script>
+
+{{template "footer.html" .}}

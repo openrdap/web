@@ -5,6 +5,10 @@
 module:testrunner
 
 GET     /                                       App.Index
+GET     /docs                                   App.Docs
+GET     /demo                                   App.Demo
+
+WS      /websocket/rdap                         App.RDAPWebsocket
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
