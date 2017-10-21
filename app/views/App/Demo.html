@@ -2,14 +2,39 @@
 {{template "header.html" .}}
 
 <h1>Demo</h1>
-<p>Click an example command, or write your own:<br><br>
-<a href="demo?cmd=rdap --help">rdap --help</a><br>
-<a href="demo?cmd=rdap -v example.cz">rdap -v example.cz</a><br>
-<a href="demo?cmd=rdap -v 2001:db8::">rdap -v 2001:db8::</a><br>
-<a href="demo?cmd=rdap -v -e 1~VRSN">rdap -v -e 1~VRSN</a><br>
-</p>
+<p>Click an example command, or write your own:<br>
+<table style="font-size:smaller">
+    <tr>
+        <th>Query type</th>
+        <th>Link</th>
+    </tr>
 
-<p>This is experimental... most of the flags advertised aren't implemented yet.</p>
+    <tr>
+        <td>Help page</td><td><a href="demo?cmd=rdap --help">rdap --help</a> (many options listed not implemented yet!)</td>
+    </tr>
+    <tr>
+        <td>Domain</td><td><a href="demo?cmd=rdap -v example.cz">rdap -v example.cz</a></td>
+    </tr>
+    <tr>
+        <td>Domain (test bootstrap)</td><td><a href="demo?cmd=rdap -v -e example.com">rdap -v -e example.com</a></td>
+    </tr>
+    <tr>
+        <td>Network</td><td><a href="demo?cmd=rdap -v 2001:db8::">rdap -v 2001:db8::</a></td>
+    </tr>
+    <tr>
+        <td>Autnum</td><td><a href="demo?cmd=rdap -v AS15169">rdap -v AS15169</a></td>
+    </tr>
+    <tr>
+        <td>Entity (test bootstrap)</td><td><a href="demo?cmd=rdap -v -e 1~VRSN">rdap -v -e 1~VRSN</a></td>
+    </tr>
+    <tr>
+        <td>Nameserver</td><td><a href="demo?cmd=rdap -v -t nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com">rdap -v -t nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com</a></td>
+    </tr>
+    <tr>
+        <td>Help</td><td><a href="demo?cmd=rdap -v -t help -s https://rdap-pilot.verisignlabs.com/rdap/v1">rdap -v -t help -s https://rdap-pilot.verisignlabs.com/rdap/v1</a></td>
+    </tr>
+</table>
+</p>
 
 <form method="get" action="/demo">
 <input id="cmd" style="width:500px" type="text" name="cmd" value="{{.cmd}}"> <input type="submit" value="Run">

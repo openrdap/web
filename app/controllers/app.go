@@ -3,6 +3,7 @@ package controllers
 import (
 	"bytes"
 	"fmt"
+	"html"
 	"strings"
 
 	"github.com/cosiner/argv"
@@ -37,7 +38,7 @@ func (c App) Docs() revel.Result {
 func (c App) Demo() revel.Result {
 	cmd := c.Params.Query.Get("cmd")
 	if cmd == "" {
-		cmd = "rdap -v example.cz"
+		cmd = "rdap -e -v example.com"
 	}
 
 	c.ViewArgs["cmd"] = cmd
@@ -88,7 +89,7 @@ type websocketWriter struct {
 
 func (w *websocketWriter) Write(p []byte) (int, error) {
 	err := websocket.JSON.Send(w.Websocket, &message{
-		Text: fmt.Sprintf("%s", p),
+		Text: html.EscapeString(fmt.Sprintf("%s", p)),
 	})
 
 	if err != nil {
