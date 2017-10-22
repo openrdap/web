@@ -30,7 +30,7 @@ func (c App) Docs() revel.Result {
 
 	rdap.RunCLI([]string{"--help"}, &stdout, &stderr, opts)
 
-	c.ViewArgs["HelpText"] = stderr.String()
+	c.ViewArgs["HelpText"] = stdout.String()
 
 	return c.Render()
 }
