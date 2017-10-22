@@ -37,13 +37,28 @@
         <td>Domain Search</td><td><a href="demo?cmd=rdap -v -t domain-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 exampl*.com">rdap -v -t domain-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 exampl*.com</a></td>
     </tr>
     <tr>
+        <td>Domain Search (by NS)</td><td><a href="demo?cmd=rdap -v -t domain-search-by-nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com">rdap -v -t domain-search-by-nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com</a></td>
+    </tr>
+    <tr>
+        <td>Domain Search (by NS IP)</td><td><a href="demo?cmd=rdap -v -t domain-search-by-nameserver-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11">rdap -v -t domain-search-by-nameserver-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11</a></td>
+    </tr>
+    <tr>
         <td>Nameserver Search</td><td><a href="demo?cmd=rdap -v -t nameserver-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns*.yahoo.com">rdap -v -t nameserver-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns*.yahoo.com</a></td>
+    </tr>
+    <tr>
+        <td>Nameserver Search (by IP)</td><td><a href="demo?cmd=rdap -v -t nameserver-search-by-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11">rdap -v -t nameserver-search-by-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11</a></td>
+    </tr>
+    <tr>
+        <td>Entity Search</td><td><a href="demo?cmd=rdap -v -t entity-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 Register*~VRSN">rdap -v -t entity-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 Register*~VRSN</a></td>
+    </tr>
+    <tr>
+        <td>Entity Search (by handle)</td><td><a href="demo?cmd=rdap -v -t entity-search-by-handle -s https://rdap-pilot.verisignlabs.com/rdap/v1 1*~VRSN">rdap -v -t entity-search-by-handle -s https://rdap-pilot.verisignlabs.com/rdap/v1 1*~VRSN</a></td>
     </tr>
 </table>
 </p>
 
 <form method="get" action="/demo">
-<input id="cmd" style="width:500px" type="text" name="cmd" value="{{.cmd}}"> <input type="submit" value="Run">
+<input id="cmd" style="width:650px" type="text" name="cmd" value="{{.cmd}}"> <input type="submit" value="Run">
 </form>
 
 <pre id="output">
