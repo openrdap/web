@@ -38,7 +38,7 @@ func (c App) Docs() revel.Result {
 func (c App) Demo() revel.Result {
 	cmd := c.Params.Query.Get("cmd")
 	if cmd == "" {
-		cmd = "rdap -e -v example.com"
+		cmd = "rdap -v -e example.com"
 	}
 
 	c.ViewArgs["cmd"] = cmd
