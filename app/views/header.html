@@ -1,92 +1,101 @@
 <!doctype html>
-<html>
-  <head>
-    <title>OpenRDAP - RDAP command line client</title>
-    <style>
-      body {
-        color: #666;
-        background-color: #efefef;
+<html lang="en">
+    <head>
+        <title>OpenRDAP - RDAP command line client</title>
+        <style>
+            body {
+                color: #666;
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+                font-size: 15px;
+                line-height: 100%;
 
-        font-family: Arial, sans-serif;
-        font-size: 15px;
-        line-height: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 900px;
+            }
 
-        margin-top: 0px;
-        margin-bottom: 0px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 800px;
-      }
+            a {
+                text-decoration: none;
+                font-weight: bold;
+                color: #666;
+            }
 
-      #main {
-        width: 800px;
-        background-color: #fff;
-        padding: 30px;
-      }
+            a:hover {
+                color: #000;
+            }
 
-      a {
-        text-decoration: none;
-        font-weight: bold;
-        color: #666;
-      }
-      
-      a:hover {
-        color: #3cd7ff;
-        text-decoration: underline;
-      }
+            h1 {
+                font-size: 18px;
+                margin-top: 0px;
+            }
 
-      h1 {
-        font-size: 18px;
-      }
+            pre {
+                font-size: 12px;
+                color: #000;
+            }
 
-      #header {
-        padding-bottom: 10px;
-        border-bottom: 4px #3cd7ff solid;
-        margin-bottom: 10px;
-      }
+            #main {
+                width: 900px;
+                background-color: #fff;
+                padding: 20px;
+                border: 1px #ccc solid;
+            }
 
-      #footer {
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 4px #3cd7ff solid;
-        font-size: smaller;
-      }
-      pre {
-        font-size: 12px;
-        color: #000;
-      }
+            #content {
+                margin-left: 150px;
+            }
 
-      #logo {
-        vertical-align:middle;
-        width:150px;
-        padding-right:20px
-      }
-      
-      #version {
-        float:right;
-        background-color:#ccc;
-        color:#666;
-        padding:5px;
-        border-radius:5px;
-      }
+            #menu {
+                float: left;
+                width: 150px;
+                margin-right:20px;
+                margin-bottom:20px;
+            }
 
-      #output {
-          overflow-x: auto;
-      }
-     </style>
-  </head>
-  <body>
-      <div id="main">
-          <div id="header">
-              <div>
-                  <a href="https://www.openrdap.org"><img id="logo" src="/public/img/logo.png" alt="OpenRDAP"></a>
-                  <div id="version">under construction</div>
-                  <span>
-                      <a href="/">Home</a> | 
-                      <a href="/docs">Docs</a> |
-                      <a href="/demo">Demo</a> |
-                      <a href="https://github.com/openrdap">GitHub</a>
-                  </span>
-              </div>
-              <div style="padding-top:5px; color:#999">RDAP command line client</div>
-          </div>
+            #menu ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #footer {
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 2px #3cd7ff solid;
+                font-size: smaller;
+                clear: both;
+            }
+
+            #logo {
+                width:130px;
+            }
+
+            #output {
+                overflow-x: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="menu">
+                    <a href="https://www.openrdap.org"><img id="logo" src="https://www.openrdap.org/public/img/logo.png" alt="OpenRDAP"></a>
+                <div style="padding-top:5px; font-size:smaller; color:#999">RDAP command line client</div>
+                <br>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="/demo">Demo</a></li>
+                    <li><a href="https://www.github.com/openrdap/rdap">Github</a></li>
+                    <li><a href="https://test.rdap.net/rdap">test.rdap.net</a></li>
+                    <!--
+                    <li><a href="">Features</a></li>
+                    <li><a href="">RDAP servers</a> <span style="font-size:10px;color:#333">new!</span></li>
+                    <li><a href="">Downloads</a></li>
+                    <li><a href="">Go library</a></li>
+                    -->
+                </ul>
+            </div>
+            <div id="content">
