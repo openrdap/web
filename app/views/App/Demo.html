@@ -5,12 +5,12 @@
 <p>Click an example command, or write your own:<br>
 <table style="font-size:smaller">
     <tr>
-        <th>Query type</th>
-        <th>Link</th>
+        <th style="text-align: left">Query</th>
+        <th style="text-align: left">Link</th>
     </tr>
 
     <tr>
-        <td>Help page</td><td><a href="demo?cmd=rdap --help">rdap --help</a> (many options listed not implemented yet!)</td>
+        <td>Help page</td><td><a href="demo?cmd=rdap --help">rdap --help</a></td>
     </tr>
     <tr>
         <td>Domain (.com)</td><td><a href="demo?cmd=rdap -v example.com">rdap -v example.com</a></td>
@@ -33,6 +33,30 @@
     <tr>
         <td>Help</td><td><a href="demo?cmd=rdap -v -t help -s https://rdap-pilot.verisignlabs.com/rdap/v1">rdap -v -t help -s https://rdap-pilot.verisignlabs.com/rdap/v1</a></td>
     </tr>
+
+	<tr>
+		<td colspan="2"><br></td>
+	</tr>
+	<tr>
+		<td colspan="2"><b>Demo queries using <a href="http://rdappilot.com/">DigiCert RDAP Pilot</a> Client Certificates:</b></td>
+	</tr>
+	<tr>
+        <td colspan="2"><i>This demo is preloaded with 3x <a href="http://rdappilot.com">DigiCert RDAP Pilot</a> Client Certificates to try out. The <a href="https://test.reddog.mx">test.reddog.mx</a> server responds with extra information when queried with a valid client certificate.</i></td>
+	</tr>
+
+    <tr>
+        <td>No Client Certificate</td><td><a href="demo?cmd=rdap -v -e proor.test">rdap -v -e proor.test</a></td>
+    </tr>
+    <tr>
+        <td>Good Client Certificate</td><td><a href="demo?cmd=rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate.p12:rdap proor.test">rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate.p12:rdap proor.test</a></td>
+    </tr>
+    <tr>
+        <td>Expired Client Certificate</td><td><a href="demo?cmd=rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Expired.p12:rdap proor.test">rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Expired.p12:rdap proor.test</a></td>
+    </tr>
+    <tr>
+        <td>Revoked Client Certificate</td><td><a href="demo?cmd=rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Revoked.p12:rdap proor.test">rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Revoked.p12:rdap proor.test</a></td>
+    </tr>
+<!--
     <tr>
         <td>Domain Search</td><td><a href="demo?cmd=rdap -v -t domain-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 exampl*.com">rdap -v -t domain-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 exampl*.com</a></td>
     </tr>
@@ -54,6 +78,8 @@
     <tr>
         <td>Entity Search (by handle)</td><td><a href="demo?cmd=rdap -v -t entity-search-by-handle -s https://rdap-pilot.verisignlabs.com/rdap/v1 1*~VRSN">rdap -v -t entity-search-by-handle -s https://rdap-pilot.verisignlabs.com/rdap/v1 1*~VRSN</a></td>
     </tr>
+-->
+
 </table>
 </p>
 
