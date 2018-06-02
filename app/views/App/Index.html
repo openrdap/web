@@ -1,131 +1,53 @@
 {{set . "title" "RDAP command line client"}}
 {{template "header.html" .}}
+            
+            <div class="callout">
+                <a href="/api">rdap.net API</a> quick reference:<br>
+                <div style="background-color:#fff;padding:5px;border:1px #ccc solid"><a href="https://www.rdap.net/domain/abc.com">https://www.rdap.net/domain/abc.com</a><br>
+                    <a href="https://www.rdap.net/ip/8.8.8.8">https://www.rdap.net/ip/8.8.8.8</a><br>
+                    <a href="https://www.rdap.net/ip/2001:db8::1/128">https://www.rdap.net/ip/2001:db8::1/128</a><br>
+                    <a href="https://www.rdap.net/autnum/174">https://www.rdap.net/autnum/174</a><br>
+            </div>
+            </div>
+            
 
+            <p>OpenRDAP is a command line client for the <a href="https://en.wikipedia.org/wiki/Registration_Data_Access_Protocol">Registration Data Access Protocol</a>, written in <a href="https://www.golang.org">Go</a>.</p>
+            <p>RDAP is a replacement for <a href="https://en.wikipedia.org/wiki/WHOIS">WHOIS</a>, which provides domain name &amp; IP address registration information in JSON format over HTTP.</p>
+            <p>You can try some example queries using OpenRDAP here:</p>
+<form method="get" action="/demo">
+    <input id="cmd" type="text" name="cmd" value="rdap -v example.com"> <input type="submit" value="Run">
+</form>
+<form method="get" action="/demo">
+    <input id="cmd" type="text" name="cmd" value="rdap -v 2a00:1450:4009:80a::200e"> <input type="submit" value="Run">
+</form>
+<form method="get" action="/demo">
+    <input id="cmd" type="text" name="cmd" value="rdap -v AS174"> <input type="submit" value="Run">
+</form>
+<p>This website provides the OpenRDAP client, Go library, and an RDAP service (rdap.net).</p>
+<h1>Features</h1>
 <p>
-OpenRDAP is a Registration Data Access Protocol (<a href="https://en.wikipedia.org/wiki/Registration_Data_Access_Protocol">RDAP</a>) client, written in <a href="https://www.golang.org">Go</a>.
-</p>
-
-<p>
-This is currently under construction, notably it does not print out RDAP responses yet. Brave gophers can checkout the 'initial' branch on GitHub. Otherwise, try the <a href="/demo">demo</a> page.
-</p>
-
-<p>
-What works so far:
 <ul>
-    <li>Project</li>
-    <ul>
-        <li>Structured as a Go RDAP library, with a command line client which uses the library.</li>
-        <li>Website for the command line client.</li>
-        <li>Go library discoverable via github/godoc/others.</li>
-        <li>Go library potentially can be used to build RDAP servers (build Go value for response, encode to RDAP response), perhaps provide an example for that.</li>
-    </ul>
-    <li>Bootstrapping</li>
-    <ul>
-        <li>Bootstrap support implemented (<a href="https://github.com/openrdap/rdap/tree/initial/bootstrap">code</a>)</li>
-        <li>Bootstrap supports all types (asn/ipv4/ipv6/dns)</li>
-        <li>Defaults to IANA's service, can also bootstrap from custom URLs</li>
-        <li>Test bootstrap service @ <a href="https://test.rdap.net/rdap/">https://test.rdap.net/rdap/</a>, which includes experimental servers not listed in IANA's service yet</li>
-        <li>Experimental support for object tags</li>
-    </ul>
-    <li>Bootstrap cache</li>
-    <ul>
-        <li>Supports caching of {asn,ipv4,ipv6,dns,...}.json both in memory, or on disk ($HOME/.openrdap ...).</li>
-        <li>Supports custom cache timeout</li>
-    </ul>
-    <li>Decoder</li>
-    <ul>
-        <li>Can decode all the RDAP response objects into Go values</li>
-        <li>Supports &amp; stores unknown fields, so you can print these out</li>
-        <li>Supports JCard</li>
-    </ul>
-    <li>Client</li>
-    <ul>
-        <li>Supports automatic query type detection (rdap as2856; rdap example.cz; rdap 192.0.2.0...)</li>
-        <li>Supports queries to URLs</li>
-        <li>Supports timeouts</li>
-        <li>Supports disabling SSL verification</li>
-        <li>Reasonably good verbose output</li>
-        <li>"Sandbox" mode to disable changing the cache dir (so it can be run on /demo)</li>
-        <li>Usage is currently something like:
-<pre style="overflow-x:hidden">
-// Client implements an RDAP client.
-//
-// This client executes RDAP requests, and returns the responses as Go values.
-//
-// Quick usage:
-//   client := &rdap.Client{}
-//   domain, err := client.QueryDomain("example.cz")
-//
-//   if err == nil {
-//     fmt.Printf("Handle=%s Domain=%s\n", domain.Handle, domain.LDHName)
-//   }
-// The QueryDomain(), QueryAutnum(), and QueryIP() methods all provide full contact information, and timeout after 30s.
-//
-// Normal usage:
-//   // Query example.cz.
-//   req := &rdap.Request{
-//     Type: rdap.DomainRequest,
-//     Query: "example.cz",
-//   }
-//
-//   client := &rdap.Client{}
-//   resp, err := client.Do(req)
-//
-//   if domain, ok := resp.Response.(*rdap.Domain); ok {
-//     fmt.Printf("Handle=%s Domain=%s\n", domain.Handle, domain.LDHName)
-//   }
-//
-// Advanced usage:
-//
-// This demonstrates custom FetchRoles, a custom Context, a custom HTTP client,
-// a custom Bootstrapper, and a custom timeout.
-//   // Nameserver query on rdap.nic.cz.
-//   server, _ := url.Parse("https://rdap.nic.cz")
-//   req := &rdap.Request{
-//     Type: rdap.NameserverRequest,
-//     Query: "a.ns.nic.cz",
-//     FetchRoles: []string{"all"},
-//     Timeout: time.Second * 45, // Custom timeout.
-//
-//     Server: server,
-//   }
-//
-//   req = req.WithContext(ctx) // Custom context (see https://blog.golang.org/context).
-//
-//   client := &rdap.Client{}
-//   client.HTTP = &http.Client{} // Custom HTTP client.
-//   client.Bootstrap = &bootstrap.Client{} // Custom bootstapper.
-//
-//   resp, err := client.Do(req)
-//
-//   if ns, ok := resp.Response.(*rdap.Nameserver); ok {
-//     fmt.Printf("Handle=%s Domain=%s\n", ns.Handle, ns.LDHName)
-//   }</pre></li>
-    </ul>
-    <li>Command line client</li>
-    <ul>
-        <li>Runs upto downloading the RDAP response, doesn't print it yet.</li>
-        <li>See the docs/demo pages for progress/intended features.</li>
-    </ul>
-    <li>Website</li>
-    <ul>
-        <li>Written in Go (revel), so it can run live OpenRDAP demos.</li>
-    </ul>
+    <li>Small &amp; fast command line RDAP client.</li>
+    <li>Supports all RDAP query types (domain, ip, asn, help, nameserver, and searches).</li>
+    <li>Automatic query type detection (domain, ip, asn queries).</li>
+    <li>Full bootstrapping support (using <a href="https://data.iana.org/rdap/">data.iana.org</a>, or a custom URL).</li>
+    <li>Optional on-disk bootstrap files cache.</li>
+    <li>Output formats: raw JSON, text, WHOIS format (domain queries)</li>
+    <li>Customisable query timeout.</li>
 </ul>
 </p>
-
+<h1>Experimental features</h1>
 <p>
-What needs doing:
 <ul>
-    <li>Encoder: Go value to RDAP response object encoder</li>
-    <li>Client: Additional fetches for contact information</li>
-    <li>Client: Needs to be robust against large (say 128MB+) responses.</li>
-    <li>Output: RDAP object text formatter (print RDAP responses out in a WHOIS, human readable type form)</li>
+    <li>Experimental object tag support</li>
+    <li>Experimental X509 certificate auth support</li>
 </ul>
 </p>
-
+<h1>Planned features</h1>
 <p>
-Updated 2nd Oct 2017.
+<ul>
+    <li>Support for future ICANN layered access specification</li>
+    <li>Bootstrap for some search queries (e.g. abc*.com)</li>
+</ul>
 </p>
-
 {{template "footer.html" .}}

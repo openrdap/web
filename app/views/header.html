@@ -1,101 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>OpenRDAP - RDAP command line client</title>
-        <style>
-            body {
-                color: #666;
-                background-color: #f0f0f0;
-                font-family: Arial, sans-serif;
-                font-size: 15px;
-                line-height: 100%;
+<head>
+    <meta charset="utf-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <title>OpenRDAP - {{.title}}</title>
+    <style>
+BODY {
+    margin: 0px;
+    background-color: #fff;
+    color:#333;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    width:850px;
+    margin-left: auto;
+    margin-right:auto;
+}
 
-                margin-top: 10px;
-                margin-bottom: 10px;
-                margin-left: auto;
-                margin-right: auto;
-                width: 900px;
-            }
+H1 {
+    font-size: 15px;
+}
 
-            a {
-                text-decoration: none;
-                font-weight: bold;
-                color: #666;
-            }
+INPUT[type=text] {
+    margin-top:2px;
+    margin-bottom:2px;
+    width:400px;
+}
 
-            a:hover {
-                color: #000;
-            }
+A {
+    text-decoration: none;
+}
 
-            h1 {
-                font-size: 18px;
-                margin-top: 0px;
-            }
+.loc {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
 
-            pre {
-                font-size: 12px;
-                color: #000;
-            }
+#header {
+    background-color: #1da1ff;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    padding-top:    15px;
+    padding-bottom: 15px;
+    margin-top:15px;
+    border-radius:5px;
+}
 
-            #main {
-                width: 900px;
-                background-color: #fff;
-                padding: 20px;
-                border: 1px #ccc solid;
-            }
+#content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
-            #content {
-                margin-left: 150px;
-            }
+#footer {
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 10px #1da1ff solid;
+    font-size: 14px;
+}
 
-            #menu {
-                float: left;
-                width: 150px;
-                margin-right:20px;
-                margin-bottom:20px;
-            }
+#headerlogo {
+    font-size: 20px;
+    vertical-align:bottom;
+}
+#headerlogo a {
+    text-decoration: none;
+}
 
-            #menu ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
+#headerlinks {
+    margin-left:15px;
+}
 
-            #footer {
-                margin-top: 10px;
-                padding-top: 10px;
-                border-top: 2px #3cd7ff solid;
-                font-size: smaller;
-                clear: both;
-            }
+#headerlinks a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
 
-            #logo {
-                width:130px;
-            }
+#headerlinks a:hover {
+    text-decoration: underline;
+}
 
-            #output {
-                overflow-x: auto;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="main">
-            <div id="menu">
-                    <a href="https://www.openrdap.org"><img id="logo" src="https://www.openrdap.org/public/img/logo.png" alt="OpenRDAP"></a>
-                <div style="padding-top:5px; font-size:smaller; color:#999">RDAP command line client</div>
-                <br>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/docs">Documentation</a></li>
-                    <li><a href="/demo">Demo</a></li>
-                    <li><a href="https://www.github.com/openrdap/rdap">Github</a></li>
-                    <li><a href="https://test.rdap.net/rdap">test.rdap.net</a></li>
-                    <!--
-                    <li><a href="">Features</a></li>
-                    <li><a href="">RDAP servers</a> <span style="font-size:10px;color:#333">new!</span></li>
-                    <li><a href="">Downloads</a></li>
-                    <li><a href="">Go library</a></li>
-                    -->
-                </ul>
-            </div>
-            <div id="content">
+.callout {
+    background-color:#e7e7e7;
+    float:right;
+    clear:both;
+    padding:8px;
+    width:300px;
+    margin-left:10px;
+    margin-bottom:10px;
+}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="loc">
+            <span id="headerlogo">
+                <a href="/"><span style="color:#e7e7e7">Open</span><span style="color:#fff">RDAP</span></a>
+            </span>
+            <span id="headerlinks">
+                <a href="/">Home</a> &middot; 
+                <a href="/docs">Manual</a> &middot; 
+                <a href="/demo">Demo</a> &middot; 
+                <a href="https://www.github.com/openrdap/rdap">GitHub</a> &middot;
+                <a href="https://godoc.org/github.com/openrdap/rdap">Go library</a> &middot;
+                <a href="/api">rdap.net API</a>
+            </span>
+        </div>
+    </div>
+    <div id="content">

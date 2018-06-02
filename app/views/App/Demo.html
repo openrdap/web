@@ -1,9 +1,9 @@
 {{set . "title" "Demo"}}
 {{template "header.html" .}}
 
-<h1>Demo</h1>
-<p>Click an example command, or write your own:<br>
-<table style="font-size:smaller">
+<h1>OpenRDAP live demo</h1>
+<p>This page runs a sandboxed version of the latest version of OpenRDAP. Click an example command, or write your own:</p>
+<table>
     <tr>
         <th style="text-align: left">Query</th>
         <th style="text-align: left">Link</th>
@@ -14,6 +14,9 @@
     </tr>
     <tr>
         <td>Domain (.com)</td><td><a href="demo?cmd=rdap -v example.com">rdap -v example.com</a></td>
+    </tr>
+    <tr>
+        <td>Domain (.com)</td><td><a href="demo?cmd=rdap -v -w example.com">rdap -v -w example.com</a> (WHOIS style output)</td>
     </tr>
     <tr>
         <td>Domain (.みんな)</td><td><a href="demo?cmd=rdap -v -e nic.みんな">rdap -v -e nic.みんな</a></td>
