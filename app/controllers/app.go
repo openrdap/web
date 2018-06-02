@@ -20,6 +20,10 @@ func (c App) Index() revel.Result {
 	return c.Render()
 }
 
+func (c App) API() revel.Result {
+	return c.Render()
+}
+
 func (c App) Docs() revel.Result {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer

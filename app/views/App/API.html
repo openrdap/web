@@ -1,0 +1,22 @@
+{{set . "title" "rdap.net API"}}
+{{template "header.html" .}}
+<h1>rdap.net API</h1>
+<p>
+<a href="https://www.rdap.net">rdap.net</a> runs a redirecting RDAP server. This is suitable for use with cURL, wget, and other HTTP clients.</p>
+
+<p>The service supports domain, ip, and autnum queries, and will redirect queries to the authoritative RDAP server via a HTTP 302 redirect. A HTTP 404 response is returned for queries without a known RDAP server.
+</p>
+
+<p>Example usage is as follows:</p>
+<ul>
+<li><a href="https://www.rdap.net/domain/example.com">https://www.rdap.net/domain/example.com</a></li>
+<li><a href="https://www.rdap.net/ip/8.8.8.8">https://www.rdap.net/ip/8.8.8.8</a></li>
+<li><a href="https://www.rdap.net/ip/2001:db8::1/128">https://www.rdap.net/ip/2001:db8::1/128</a></li>
+<li><a href="https://www.rdap.net/autnum/174">https://www.rdap.net/autnum/174</a></li>
+</ul>
+
+<p>The bootstrap information is refreshed hourly.</p>
+<p>The service runs on Google App Engine, with <a href="https://github.com/openrdap/api">source code</a> on GitHub.</p>
+
+</p>
+{{template "footer.html" .}}
