@@ -19,70 +19,17 @@
         <td>Domain (.com)</td><td><a href="demo?cmd=rdap -v -w example.com">rdap -v -w example.com</a> (WHOIS style output)</td>
     </tr>
     <tr>
-        <td>Domain (.みんな)</td><td><a href="demo?cmd=rdap -v -e nic.みんな">rdap -v -e nic.みんな</a></td>
-    </tr>
-    <tr>
         <td>Network</td><td><a href="demo?cmd=rdap -v 2001:db8::">rdap -v 2001:db8::</a></td>
     </tr>
     <tr>
         <td>Autnum</td><td><a href="demo?cmd=rdap -v AS15169">rdap -v AS15169</a></td>
     </tr>
     <tr>
-        <td>Entity (test bootstrap)</td><td><a href="demo?cmd=rdap -v -e 1~VRSN">rdap -v -e 1~VRSN</a></td>
+        <td>Nameserver</td><td><a href="demo?cmd=rdap -v -t nameserver -s https://rdap.verisign.com/com/v1 ns1.google.com">rdap -v -t nameserver -s https://rdap.verisign.com/com/v1 ns1.google.com</a></td>
     </tr>
     <tr>
-        <td>Nameserver</td><td><a href="demo?cmd=rdap -v -t nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com">rdap -v -t nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com</a></td>
+        <td>Help</td><td><a href="demo?cmd=rdap -v -t help -s https://rdap.verisign.com/com/v1">rdap -v -t help -s https://rdap.verisign.com/com/v1</a></td>
     </tr>
-    <tr>
-        <td>Help</td><td><a href="demo?cmd=rdap -v -t help -s https://rdap-pilot.verisignlabs.com/rdap/v1">rdap -v -t help -s https://rdap-pilot.verisignlabs.com/rdap/v1</a></td>
-    </tr>
-
-	<tr>
-		<td colspan="2"><br></td>
-	</tr>
-	<tr>
-		<td colspan="2"><b>Demo queries using <a href="http://rdappilot.com/">DigiCert RDAP Pilot</a> Client Certificates:</b></td>
-	</tr>
-	<tr>
-        <td colspan="2"><i>This demo is preloaded with 3x <a href="http://rdappilot.com">DigiCert RDAP Pilot</a> Client Certificates to try out. The <a href="https://test.reddog.mx">test.reddog.mx</a> server responds with extra information when queried with a valid client certificate.</i></td>
-	</tr>
-
-    <tr>
-        <td>No Client Certificate</td><td><a href="demo?cmd=rdap -v -e proor.test">rdap -v -e proor.test</a></td>
-    </tr>
-    <tr>
-        <td>Good Client Certificate</td><td><a href="demo?cmd=rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate.p12:rdap proor.test">rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate.p12:rdap proor.test</a></td>
-    </tr>
-    <tr>
-        <td>Expired Client Certificate</td><td><a href="demo?cmd=rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Expired.p12:rdap proor.test">rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Expired.p12:rdap proor.test</a></td>
-    </tr>
-    <tr>
-        <td>Revoked Client Certificate</td><td><a href="demo?cmd=rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Revoked.p12:rdap proor.test">rdap -v -e --p12=DigiCert_RDAP_Pilot_Client_Certificate_Revoked.p12:rdap proor.test</a></td>
-    </tr>
-<!--
-    <tr>
-        <td>Domain Search</td><td><a href="demo?cmd=rdap -v -t domain-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 exampl*.com">rdap -v -t domain-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 exampl*.com</a></td>
-    </tr>
-    <tr>
-        <td>Domain Search (by NS)</td><td><a href="demo?cmd=rdap -v -t domain-search-by-nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com">rdap -v -t domain-search-by-nameserver -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns1.google.com</a></td>
-    </tr>
-    <tr>
-        <td>Domain Search (by NS IP)</td><td><a href="demo?cmd=rdap -v -t domain-search-by-nameserver-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11">rdap -v -t domain-search-by-nameserver-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11</a></td>
-    </tr>
-    <tr>
-        <td>Nameserver Search</td><td><a href="demo?cmd=rdap -v -t nameserver-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns*.yahoo.com">rdap -v -t nameserver-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 ns*.yahoo.com</a></td>
-    </tr>
-    <tr>
-        <td>Nameserver Search (by IP)</td><td><a href="demo?cmd=rdap -v -t nameserver-search-by-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11">rdap -v -t nameserver-search-by-ip -s https://rdap-pilot.verisignlabs.com/rdap/v1 194.72.238.11</a></td>
-    </tr>
-    <tr>
-        <td>Entity Search</td><td><a href="demo?cmd=rdap -v -t entity-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 Register*~VRSN">rdap -v -t entity-search -s https://rdap-pilot.verisignlabs.com/rdap/v1 Register*~VRSN</a></td>
-    </tr>
-    <tr>
-        <td>Entity Search (by handle)</td><td><a href="demo?cmd=rdap -v -t entity-search-by-handle -s https://rdap-pilot.verisignlabs.com/rdap/v1 1*~VRSN">rdap -v -t entity-search-by-handle -s https://rdap-pilot.verisignlabs.com/rdap/v1 1*~VRSN</a></td>
-    </tr>
--->
-
 </table>
 </p>
 
